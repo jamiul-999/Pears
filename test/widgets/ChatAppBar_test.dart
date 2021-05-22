@@ -10,8 +10,8 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(app);
 
-    expect(find.text('Aditya Gurjar'), findsOneWidget);
-    expect(find.text('@adityagurjar'), findsOneWidget);
+    expect(find.text('Bruce Wayne'), findsOneWidget);
+    expect(find.text('@darkknight'), findsOneWidget);
     expect(find.byType(IconButton), findsNWidgets(1));
     expect(find.byType(CircleAvatar), findsOneWidget);
   });
