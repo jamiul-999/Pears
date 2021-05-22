@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pears/pages/ConversationPage.dart';
-import 'package:pears/pages/ConversationPageList.dart';
+import 'package:pears/pages/ConversationPageSlide.dart';
 
 void main() {
   const MaterialApp app = MaterialApp(
-    home: Scaffold(body: const ConversationPageList()),
+    home: Scaffold(body: const ConversationPageSlide()),
   );
-  testWidgets('ConversationPageList UI Test', (WidgetTester tester) async {
+  testWidgets('ConversationPageSlide UI Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(app);
     expect(find.byType(ConversationPage), findsOneWidget);

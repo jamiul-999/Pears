@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/ConversationPageList.dart';
+import 'config/Palette.dart';
+import 'pages/ConversationPageSlide.dart';
 
 void main() => runApp(Pears());
 
@@ -10,9 +11,9 @@ class Pears extends StatelessWidget {
     return MaterialApp(
       title: 'Pears',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Palette.primaryColor,
       ),
-      home: ConversationPageList(),
+      home: ConversationPageSlide(),
     );
   }
 }
