@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pears/config/Assets.dart';
@@ -29,45 +27,49 @@ class _RegisterPageState extends State<RegisterPage>
       PageController(); // this is the controller of the page. This is used to navigate back and forth between the pages
 
   //Fields related to animation of the gradient
-  Alignment begin = Alignment.center;
-  Alignment end = Alignment.bottomRight;
+  Alignment? begin = Alignment.center;
+  Alignment? end = Alignment.bottomRight;
 
   //Fields related to animating the layout and pushing widgets up when the focus is on the username field
-  AnimationController usernameFieldAnimationController;
-  Animation profilePicHeightAnimation, usernameAnimation, ageAnimation;
+  AnimationController? usernameFieldAnimationController; //null-safety added
+  Animation? profilePicHeightAnimation,
+      usernameAnimation,
+      ageAnimation; //null-safety added
   FocusNode usernameFocusNode = FocusNode();
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this); //null-check added
     usernameFieldAnimationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    profilePicHeightAnimation =
-        Tween(begin: 100.0, end: 0.0).animate(usernameFieldAnimationController)
+    profilePicHeightAnimation = Tween(begin: 100.0, end: 0.0)
+        .animate(usernameFieldAnimationController!) //null-check added
           ..addListener(() {
             setState(() {});
           });
-    usernameAnimation =
-        Tween(begin: 50.0, end: 10.0).animate(usernameFieldAnimationController)
+    usernameAnimation = Tween(begin: 50.0, end: 10.0)
+        .animate(usernameFieldAnimationController!) //null-check added
           ..addListener(() {
             setState(() {});
           });
-    ageAnimation =
-        Tween(begin: 80.0, end: 10.0).animate(usernameFieldAnimationController)
+    ageAnimation = Tween(begin: 80.0, end: 10.0)
+        .animate(usernameFieldAnimationController!) //null-check added
           ..addListener(() {
             setState(() {});
           });
     usernameFocusNode.addListener(() {
       if (usernameFocusNode.hasFocus) {
-        usernameFieldAnimationController.forward();
+        usernameFieldAnimationController!.forward(); //null-check added
       } else {
-        usernameFieldAnimationController.reverse();
+        usernameFieldAnimationController!.reverse(); //null-check added
       }
     });
     pageController.addListener(() {
       setState(() {
-        begin = Alignment(pageController.page, pageController.page);
-        end = Alignment(1 - pageController.page, 1 - pageController.page);
+        begin = Alignment(
+            pageController.page!, pageController.page!); //null check added
+        end = Alignment(1 - pageController.page!,
+            1 - pageController.page!); //null check added
       });
     });
     super.initState();
@@ -83,7 +85,9 @@ class _RegisterPageState extends State<RegisterPage>
           body: SafeArea(
               child: Container(
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(begin: begin, end: end, colors: [
+                      gradient:
+                          LinearGradient(begin: begin!, end: end!, colors: [
+                    //null check added
                     Palette.gradientStartColor,
                     Palette.gradientEndColor
                   ])),
@@ -185,7 +189,8 @@ class _RegisterPageState extends State<RegisterPage>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: profilePicHeightAnimation.value),
+              SizedBox(
+                  height: profilePicHeightAnimation!.value), //null check added
               Container(
                   child: CircleAvatar(
                 child: Column(
@@ -210,7 +215,7 @@ class _RegisterPageState extends State<RegisterPage>
                 radius: 60,
               )),
               SizedBox(
-                height: ageAnimation.value,
+                height: ageAnimation!.value, //null check added
               ),
               Text(
                 'How old are you?',
@@ -220,21 +225,23 @@ class _RegisterPageState extends State<RegisterPage>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   NumberPicker.horizontal(
-                      initialValue: age,
-                      minValue: 15,
-                      maxValue: 100,
-                      highlightSelectedValue: true,
-                      onChanged: (num value) {
-                        setState(() {
-                          age = value;
-                        });
-                        //   print(age);
-                      }),
+                    initialValue: age,
+                    minValue: 15,
+                    maxValue: 100,
+                    highlightSelectedValue: true,
+                    onChanged: (num value) {
+                      setState(() {
+                        age = value as int; //type casted
+                      });
+                      //   print(age);
+                    },
+                    decoration: null,
+                  ),
                   Text('Years', style: Styles.textLight)
                 ],
               ),
               SizedBox(
-                height: usernameAnimation.value,
+                height: usernameAnimation!.value, //null check added
               ),
               Container(
                 child: Text(
@@ -292,8 +299,8 @@ class _RegisterPageState extends State<RegisterPage>
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    usernameFieldAnimationController.dispose();
+    WidgetsBinding.instance!.removeObserver(this); // null check added
+    usernameFieldAnimationController!.dispose(); // null check added
     usernameFocusNode.dispose();
     super.dispose();
   }
@@ -318,7 +325,7 @@ class _RegisterPageState extends State<RegisterPage>
   onKeyboardChanged(bool isVisible) {
     if (!isVisible) {
       FocusScope.of(context).requestFocus(FocusNode());
-      usernameFieldAnimationController.reverse();
+      usernameFieldAnimationController!.reverse(); //null check added
     }
   }
 

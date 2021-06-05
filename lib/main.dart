@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'package:flutter/material.dart';
 import 'config/Palette.dart';
 import 'pages/RegisterPage.dart';

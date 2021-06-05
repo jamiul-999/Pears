@@ -1,9 +1,7 @@
-// @dart=2.9
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:meta/meta.dart';
+//import 'package:meta/meta.dart';
 
 ///
 /// Helper class that ensures a Widget is visible when it has the focus
@@ -31,9 +29,9 @@ import 'package:meta/meta.dart';
 ///
 class EnsureVisibleWhenFocused extends StatefulWidget {
   const EnsureVisibleWhenFocused({
-    Key key,
-    @required this.child,
-    @required this.focusNode,
+    Key? key,
+    required this.child,
+    required this.focusNode,
     this.curve: Curves.ease,
     this.duration: const Duration(milliseconds: 100),
   }) : super(key: key);
@@ -68,12 +66,12 @@ class _EnsureVisibleWhenFocusedState extends State<EnsureVisibleWhenFocused>
   void initState() {
     super.initState();
     widget.focusNode.addListener(_ensureVisible);
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this); //null check added
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this); //null check added
     widget.focusNode.removeListener(_ensureVisible);
     super.dispose();
   }
@@ -123,8 +121,9 @@ class _EnsureVisibleWhenFocusedState extends State<EnsureVisibleWhenFocused>
     }
 
     // Find the object which has the focus
-    final RenderObject object = context.findRenderObject();
-    final RenderAbstractViewport viewport = RenderAbstractViewport.of(object);
+    final RenderObject? object = context.findRenderObject(); //null safety
+    final RenderAbstractViewport? viewport =
+        RenderAbstractViewport.of(object); //null safety
 
     // If we are not working in a Scrollable, skip this routine
     if (viewport == null) {
@@ -132,14 +131,15 @@ class _EnsureVisibleWhenFocusedState extends State<EnsureVisibleWhenFocused>
     }
 
     // Get the Scrollable state (in order to retrieve its offset)
-    ScrollableState scrollableState = Scrollable.of(context);
+    ScrollableState? scrollableState = Scrollable.of(context); //null safety
     assert(scrollableState != null);
 
     // Get its offset
-    ScrollPosition position = scrollableState.position;
+    ScrollPosition position = scrollableState!.position; //null check
     double alignment;
 
-    if (position.pixels > viewport.getOffsetToReveal(object, 0.0).offset) {
+    if (position.pixels > viewport.getOffsetToReveal(object!, 0.0).offset) {
+      //null check
       // Move down to the top of the viewport
       alignment = 0.0;
     } else if (position.pixels <
