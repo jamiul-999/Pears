@@ -72,7 +72,6 @@ class NumberPicker extends StatelessWidget {
         assert(maxValue! > minValue!),
         assert(initialValue! >= minValue! && initialValue <= maxValue!),
         assert(step! > 0),
-        assert(scrollDirection != null),
         selectedIntValue = initialValue,
         selectedDecimalValue = -1,
         decimalPlaces = 0,
@@ -531,8 +530,10 @@ class NumberPicker extends StatelessWidget {
   ) {
     // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
     return notification is UserScrollNotification &&
-        notification.direction == ScrollDirection.idle &&
-        scrollController!.position.activity is! HoldScrollActivity;
+        notification.direction == ScrollDirection.idle;
+    // &&
+
+    //scrollController!.position.activity is! HoldScrollActivity;
   }
 
   /// Allows to find currently selected element index and animate this element
