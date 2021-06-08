@@ -14,7 +14,7 @@ class Uninitialized extends AuthenticationState {
   String toString() => 'Uninitialized';
 
   @override
-  List<Object?> get props => throw Uninitialized();
+  List<Object?> get props => [];
 }
 
 class AuthInProgress extends AuthenticationState {
@@ -22,7 +22,7 @@ class AuthInProgress extends AuthenticationState {
   String toString() => 'AuthInProgress';
 
   @override
-  List<Object?> get props => throw AuthInProgress();
+  List<Object?> get props => [];
 }
 
 class Authenticated extends AuthenticationState {
@@ -32,7 +32,7 @@ class Authenticated extends AuthenticationState {
   String toString() => 'Authenticated';
 
   @override
-  List<Object?> get props => throw Authenticated(user);
+  List<Object?> get props => [];
 }
 
 class PreFillData extends AuthenticationState {
@@ -42,7 +42,7 @@ class PreFillData extends AuthenticationState {
   String toString() => 'PreFillData';
 
   @override
-  List<Object?> get props => throw PreFillData(user);
+  List<Object?> get props => [];
 }
 
 class UnAuthenticated extends AuthenticationState {
@@ -50,7 +50,7 @@ class UnAuthenticated extends AuthenticationState {
   String toString() => 'UnAuthenticated';
 
   @override
-  List<Object?> get props => throw UnAuthenticated();
+  List<Object?> get props => [];
 }
 
 class ReceivedProfilePicture extends AuthenticationState {
@@ -60,7 +60,7 @@ class ReceivedProfilePicture extends AuthenticationState {
   toString() => 'ReceivedProfilePicture';
 
   @override
-  List<Object?> get props => throw ReceivedProfilePicture(file);
+  List<Object?> get props => [];
 }
 
 class ProfileUpdateInProgress extends AuthenticationState {
@@ -68,7 +68,7 @@ class ProfileUpdateInProgress extends AuthenticationState {
   String toString() => 'ProfileUpdateInProgress';
 
   @override
-  List<Object?> get props => throw ProfileUpdateInProgress();
+  List<Object?> get props => [];
 }
 
 class ProfileUpdated extends AuthenticationState {
@@ -76,5 +76,5 @@ class ProfileUpdated extends AuthenticationState {
   String toString() => 'ProfileComplete';
 
   @override
-  List<Object?> get props => throw ProfileUpdated();
+  List<Object?> get props => [];
 }
