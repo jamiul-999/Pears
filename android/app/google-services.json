@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "559922546452",
+    "project_id": "pears-af753",
+    "storage_bucket": "pears-af753.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559922546452:android:669d3250cda9057b862401",
+        "android_client_info": {
+          "package_name": "com.jhdipto.pears"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559922546452-m9r0dilpebeivhdcrndp4okoqgb1pbcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFKP0rDzv8qezVyCgYLg3kBjcY1itTngA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559922546452-m9r0dilpebeivhdcrndp4okoqgb1pbcf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
