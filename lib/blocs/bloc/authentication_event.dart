@@ -16,7 +16,7 @@ class AppLaunched extends AuthenticationEvent {
   String toString() => 'AppLaunched';
 
   @override
-  List<Object?> get props => throw AppLaunched();
+  List<Object?> get props => [];
 }
 
 class ClickedGoogleLogin extends AuthenticationEvent {
@@ -24,7 +24,7 @@ class ClickedGoogleLogin extends AuthenticationEvent {
   String toString() => 'ClickedGoogleLogin';
 
   @override
-  List<Object?> get props => throw ClickedGoogleLogin();
+  List<Object?> get props => [];
 }
 
 class LoggedIn extends AuthenticationEvent {
@@ -34,7 +34,7 @@ class LoggedIn extends AuthenticationEvent {
   String toString() => 'LoggedIn';
 
   @override
-  List<Object?> get props => throw LoggedIn(user);
+  List<Object?> get props => [];
 }
 
 class PickedProfilePicture extends AuthenticationEvent {
@@ -44,7 +44,7 @@ class PickedProfilePicture extends AuthenticationEvent {
   String toString() => 'PickedProfilePicture';
 
   @override
-  List<Object?> get props => throw PickedProfilePicture(file);
+  List<Object?> get props => [];
 }
 
 class SaveProfile extends AuthenticationEvent {
@@ -56,7 +56,7 @@ class SaveProfile extends AuthenticationEvent {
   String toString() => 'SaveProfile';
 
   @override
-  List<Object?> get props => throw SaveProfile(profileImage, age, username);
+  List<Object?> get props => [];
 }
 
 class ClickedLogout extends AuthenticationEvent {
@@ -64,5 +64,5 @@ class ClickedLogout extends AuthenticationEvent {
   String toString() => 'ClickedLogout';
 
   @override
-  List<Object?> get props => throw ClickedLogout();
+  List<Object?> get props => [];
 }
